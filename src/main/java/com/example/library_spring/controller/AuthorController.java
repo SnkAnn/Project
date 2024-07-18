@@ -3,23 +3,42 @@ package com.example.library_spring.controller;
 import com.example.library_spring.model.Author;
 
 import com.example.library_spring.service.AuthorService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
 @AllArgsConstructor
 public class AuthorController {
-    private final AuthorService userService;
+    private final AuthorService authorService;
 
-    @GetMapping("/user/{userId}")
-    public Author getUser(@PathVariable Long userId){
-       return userService.getAuthor(userId);
+    @PostMapping
+    public ResponseEntity<Author> createAuthor(@Valid @RequestBody Author author) {
+        authorService.createAuthor(author);
+        return new ResponseEntity<>(author, HttpStatus.CREATED);
     }
 
-    @PostMapping("/updateUserDescription/{userId}/{newDescription}")
-    public void updateUserDescription(@PathVariable Long userId, @PathVariable String newDescription){
-        userService.updateAuthorDescription(userId,newDescription);
+    @GetMapping("/{id}")
+    public ResponseEntity<Author> getAuthor(@PathVariable("id") Long authorId) {
+        Author author = authorService.getAuthor(authorId);
+        return new ResponseEntity<>(author, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAuthor(@PathVariable("id") Long authorId) {
+        authorService.deleteAuthor(authorId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/{id}/description")
+    public ResponseEntity<Void> updateAuthorDescription(
+            @PathVariable("id") Long authorId,
+            @RequestParam("newDescription") String newDescription) {
+        authorService.updateAuthorDescription(authorId, newDescription);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 

@@ -26,8 +26,9 @@ public class BooksServiceImpl implements BooksService {
     }
 
     @Override
-    public void createBook(Book book) {
+    public Book createBook(Book book) {
         booksRepository.save(book);
+        return book;
     }
 
     @Override
@@ -35,7 +36,13 @@ public class BooksServiceImpl implements BooksService {
         return booksRepository.getBooksByAuthor(authorId);
     }
     @Override
-    public void deleteBook(Long bookId) {
+    public boolean deleteBook(Long bookId) {
         booksRepository.deleteById(bookId);
+        return false;
+    }
+
+    @Override
+    public Book getBookById(Long bookId) {
+        return booksRepository.getById(bookId);
     }
 }

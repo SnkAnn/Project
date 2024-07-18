@@ -11,9 +11,11 @@ public interface BooksService {
 
     void updateBookText(Long bookId, String bookText);
 
-    void createBook( Book book);
+    Book createBook(Book book);
 
 
     List< Book> getBooksByAuthor(Long userId);
-     void deleteBook(Long bookId);
+     boolean deleteBook(Long bookId);
+
+    Book getBookById(Long bookId);
 }
