@@ -1,5 +1,6 @@
 package com.example.library_spring.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class Author {
     @Column(name = "biography")
     private String biography;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> books;
 }

@@ -37,12 +37,15 @@ public class BooksServiceImpl implements BooksService {
     }
     @Override
     public boolean deleteBook(Long bookId) {
-        booksRepository.deleteById(bookId);
+        if (booksRepository.existsById(bookId)) {
+            booksRepository.deleteById(bookId);
+            return true;
+        }
         return false;
     }
 
     @Override
     public Book getBookById(Long bookId) {
-        return booksRepository.getById(bookId);
+        return booksRepository.findById(bookId).orElse(null);
     }
 }

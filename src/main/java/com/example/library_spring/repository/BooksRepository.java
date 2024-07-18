@@ -16,8 +16,8 @@ public interface BooksRepository extends JpaRepository<Book, Long> {
     @Query("SELECT b.text FROM Book b WHERE b.id=:bookId")
     String getTextOfBook(@ Param("bookId") Long bookId);
 
-    @Query("SELECT b FROM Book b WHERE b.author.id=:authorId")
-    List<Book> getBooksByAuthor(@Param("authorId") Long userId);
+    @Query("SELECT b FROM Book b WHERE b.author.id = :authorId")
+    List<Book> getBooksByAuthor(@Param("authorId") Long authorId);
 
     @Query("UPDATE Book b SET b.text = :text WHERE b.id = :id")
     @Modifying
