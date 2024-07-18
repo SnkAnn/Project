@@ -18,7 +18,7 @@ import java.util.List;
 public class BookController {
     private final BooksService booksService;
 
-    @GetMapping("/{bookId}")
+    @GetMapping("getBookById/{bookId}")
     public ResponseEntity<Book> getBookById(@PathVariable Long bookId) {
         Book book = booksService.getBookById(bookId);
         if (book == null) {
@@ -27,7 +27,7 @@ public class BookController {
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
-    @PostMapping("/createBook")
+    @PostMapping("createBook")
     public ResponseEntity<Book> createBook(@Valid @RequestBody Book book) {
         Book createdBook = booksService.createBook(book);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
@@ -35,7 +35,7 @@ public class BookController {
 
 
 
-    @DeleteMapping("/{bookId}")
+    @DeleteMapping("deleteBook/{bookId}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long bookId) {
         if (booksService.deleteBook(bookId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -44,7 +44,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/text/{bookId}")
+    @GetMapping("getTextOfBook/{bookId}")
     public ResponseEntity<String> getTextOfBook(@PathVariable Long bookId) {
         String text = booksService.getTextOfBook(bookId);
         if (text == null) {
@@ -53,7 +53,7 @@ public class BookController {
         return new ResponseEntity<>(text, HttpStatus.OK);
     }
 
-    @PutMapping("/text/{bookId}")
+    @PutMapping("updateBookText/{bookId}")
     public ResponseEntity<Void> updateBookText(
             @PathVariable Long bookId,
             @RequestBody String bookText) {
@@ -61,7 +61,7 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/author/{authorId}")
+    @GetMapping("getBooksByAuthor/{authorId}")
 
     public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable Long authorId) {
         List<Book> books = booksService.getBooksByAuthor(authorId);

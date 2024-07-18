@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.*;
 public class AuthorController {
     private final AuthorService authorService;
 
-    @PostMapping
+    @PostMapping("createAuthor")
     public ResponseEntity<Author> createAuthor(@Valid @RequestBody Author author) {
         authorService.createAuthor(author);
         return new ResponseEntity<>(author, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("getAuthor/{id}")
     public ResponseEntity<Author> getAuthor(@PathVariable("id") Long authorId) {
         Author author = authorService.getAuthor(authorId);
         return new ResponseEntity<>(author, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("deleteAuthor/{id}")
     public ResponseEntity<Void> deleteAuthor(@PathVariable("id") Long authorId) {
         authorService.deleteAuthor(authorId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/{id}/description")
+    @PutMapping("updateAuthorDescription/{id}")
     public ResponseEntity<Void> updateAuthorDescription(
             @PathVariable("id") Long authorId,
             @RequestParam("newDescription") String newDescription) {

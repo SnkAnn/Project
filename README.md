@@ -52,8 +52,8 @@
 
 2. **Добавьте запросы в коллекцию**:
 
-    - **POST** `/`
-        - **URL**: `http://localhost:8080/`
+    - **POST** `/createAuthor`
+        - **URL**: `http://localhost:8080/createAuthor`
         - **Method**: POST
         - **Body**: JSON (raw)
       ```json
@@ -63,16 +63,16 @@
       }
       ```
 
-    - **GET** `/{id}`
-        - **URL**: `http://localhost:8080/{id}`
+    - **GET** `/getAuthor/{id}`
+        - **URL**: `http://localhost:8080/getAuthor/{id}`
         - **Method**: GET
 
-    - **DELETE** `/{id}`
-        - **URL**: `http://localhost:8080/{id}`
+    - **DELETE** `/deleteAuthor/{id}`
+        - **URL**: `http://localhost:8080/deleteAuthor/{id}`
         - **Method**: DELETE
 
-    - **PUT** `/{id}/description`
-        - **URL**: `http://localhost:8080/{id}/description?newDescription=New Description`
+    - **PUT** `/updateAuthorDescription/{id}`
+        - **URL**: `http://localhost:8080/updateAuthorDescription/{id}?newDescription=New Description`
         - **Method**: PUT
 
     - **POST** `/createBook`
@@ -93,28 +93,28 @@
       }
       ```
 
-    - **GET** `/{bookId}`
-        - **URL**: `http://localhost:8080/{bookId}`
+    - **GET** `/getBookById/{bookId}`
+        - **URL**: `http://localhost:8080/getBookById/{bookId}`
         - **Method**: GET
 
-    - **DELETE** `/{bookId}`
-        - **URL**: `http://localhost:8080/{bookId}`
+    - **DELETE** `/deleteBook/{bookId}`
+        - **URL**: `http://localhost:8080/deleteBook/{bookId}`
         - **Method**: DELETE
 
-    - **GET** `/text/{bookId}`
-        - **URL**: `http://localhost:8080/text/{bookId}`
+    - **GET** `/getTextOfBook/{bookId}`
+        - **URL**: `http://localhost:8080/getTextOfBook/{bookId}`
         - **Method**: GET
 
-    - **PUT** `/text/{bookId}`
-        - **URL**: `http://localhost:8080/text/{bookId}`
+    - **PUT** `/updateBookText/{bookId}`
+        - **URL**: `http://localhost:8080/updateBookText/{bookId}`
         - **Method**: PUT
         - **Body**: Text (raw)
       ```text
       Updated Book Text
       ```
 
-    - **GET** `/author/{authorId}`
-        - **URL**: `http://localhost:8080/author/{authorId}`
+    - **GET** `/getBooksByAuthor/{authorId}`
+        - **URL**: `http://localhost:8080/getBooksByAuthor/{authorId}`
         - **Method**: GET
 
 3. **Сохраните коллекцию и запросы**.
