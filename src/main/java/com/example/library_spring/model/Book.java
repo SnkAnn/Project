@@ -1,13 +1,10 @@
 package com.example.library_spring.model;
 
-
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+ 
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
-import java.util.TimeZone;
 
 @Data
 @Entity
@@ -23,7 +20,6 @@ public class Book {
     private String title;
 
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private Author author;
 
