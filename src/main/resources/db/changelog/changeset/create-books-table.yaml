@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-books-table
+      author: Ann
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(1000)
+              - column:
+                  name: author_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount_of_reads
+                  type: int
+              - column:
+                  name: adding_time
+                  type: timestamp
+              - column:
+                  name: imageurl
+                  type: varchar(255)
+              - column:
+                  name: text
+                  type: text
+
+        - addForeignKeyConstraint:
+            baseTableName: books
+            baseColumnNames: author_id
+            constraintName: fk_books_author
+            referencedTableName: authors
+            referencedColumnNames: id

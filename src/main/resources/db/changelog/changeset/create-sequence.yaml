@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-sequences
+      author: Ann
+      changes:
+        - createSequence:
+            sequenceName: BOOKS_SEQ
+        - createSequence:
+            sequenceName: AUTHORS_SEQ
