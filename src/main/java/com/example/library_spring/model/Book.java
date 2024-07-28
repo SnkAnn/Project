@@ -1,6 +1,6 @@
 package com.example.library_spring.model;
 
- 
+
 import jakarta.persistence.*;
 import lombok.Data;
 
